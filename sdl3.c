@@ -2,6 +2,7 @@
 #include <SDL_main.h>
 
 #include <stdio.h>
+#include <stdlib.h>
 
 typedef enum boolean_enum {false,true} bool;
 

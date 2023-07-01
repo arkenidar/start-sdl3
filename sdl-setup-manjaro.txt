@@ -1,0 +1,19 @@
+
+# get repo
+git clone https://github.com/libsdl-org/SDL
+
+# enter repo (other location possible on your system)
+cd ~/code/SDL
+
+# build and install from repo
+# Linux and other UNIX systems: (FILE: "INSTALL.txt" of SDL repo)
+# added "sudo" for install
+cmake -S . -B build && cmake --build build && sudo cmake --install build
+
+# add /usr/local/lib/pkgconfig
+export PKG_CONFIG_PATH=$PACKAGE_CONFIG_PATH:/usr/local/lib/pkgconfig
+
+pkg-config sdl3 --cflags --libs # test
+
+gcc sdl3.c $(pkg-config sdl3 --cflags --libs) && ./a.out
+g++ sdl3.cpp $(pkg-config sdl3 --cflags --libs) && ./a.out

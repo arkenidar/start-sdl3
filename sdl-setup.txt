@@ -1,0 +1,40 @@
+# SDL3: C++ and C examples
+
+# used with MSYS2 + MINGW64 on my dual-boot Windows 11
+
+
+# #### clone SDL somewhere to build and install it
+
+cd "C:\opt\Dropbox\gh-repos" # my repo collection (also DropBox-enabled)
+
+git clone https://github.com/libsdl-org/SDL # repo clone
+
+cd "C:\opt\Dropbox\gh-repos\SDL" # cloned repository location
+
+# #### build and INSTALL SDL to /c/opt/code/libsdl3
+
+# added: --prefix /c/opt/code/libsdl3
+mkdir --parents /c/opt/code/libsdl3
+
+# prefix here
+cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=build-scripts/cmake-toolchain-mingw64-x86_64.cmake && cmake --build build && cmake --install build --prefix /c/opt/code/libsdl3 # Windows building with mingw-w64 for x64:
+
+# prefix here
+export "PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/c/opt/code/libsdl3/lib/pkgconfig"
+pkg-config sdl3 --cflags --libs # test
+
+# prefix here
+export "PATH=$PATH:/c/opt/code/libsdl3/bin"
+
+# note: these 2 export-s are to be made permanent by adding them properly to start scripts such as ".bashrc" (permanent between bash shell restarts)
+
+# #### after INSTALL : SDL usage initial tests
+
+# first test
+# https://raw.githubusercontent.com/Ravbug/sdl3-sample/main/src/main.cpp
+
+# g++ for .cpp (C++ from above link)
+cd /c/opt/code/start-sdl3 && g++ sdl3.cpp $(pkg-config sdl3 --cflags --libs) -mconsole && ./a
+
+# gcc for .c ( C++ adapted by me to C only)
+cd /c/opt/code/start-sdl3 && gcc sdl3.c $(pkg-config sdl3 --cflags --libs) -mconsole && ./a

@@ -1,5 +1,9 @@
 # SDL3: C++ and C examples
 
+
+gcc sdl3.c -I. -L. -lSDL3 -o app
+
+
 # used with MSYS2 + MINGW64 on my dual-boot Windows 11
 
 

@@ -4,6 +4,9 @@
 gcc sdl3.c -I. -L. -lSDL3 -o app
 
 
+gcc testspriteminimal.c testutils.c -I. -L. -lSDL3 -o app-sprite-test
+
+
 # used with MSYS2 + MINGW64 on my dual-boot Windows 11
 
 

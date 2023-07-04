@@ -1,14 +1,21 @@
 # SDL3: C++ and C examples
 
+# used with MSYS2 + MINGW64 on my dual-boot Windows 11
 
-gcc sdl3.c -I. -L. -lSDL3 -o app
+# min-gw
+gcc sdl3.c -I. -L. -lSDL3 -o app && ./app
+# linux manjaro
+gcc sdl3.c $(pkg-config sdl3 --libs) -o app && ./app
 
-
+# min-gw
 gcc testspriteminimal.c testutils.c -I. -L. -lSDL3 -o app-sprite-test && ./app-sprite-test
+# linux manjaro
+gcc testspriteminimal.c testutils.c $(pkg-config sdl3 --libs) -o app-sprite-test && ./app-sprite-test
 
-
+# min-gw
 gcc -DHAVE_VULKAN_H testvulkan.c -I. -L. -lSDL3_test -lSDL3 -o app-vulkan-test && ./app-vulkan-test
-
+# linux manjaro
+gcc -DHAVE_VULKAN_H testvulkan.c -lSDL3_test $(pkg-config sdl3 --libs) -o app-vulkan-test && ./app-vulkan-test
 
 # used with MSYS2 + MINGW64 on my dual-boot Windows 11
 

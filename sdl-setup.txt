@@ -4,7 +4,10 @@
 gcc sdl3.c -I. -L. -lSDL3 -o app
 
 
-gcc testspriteminimal.c testutils.c -I. -L. -lSDL3 -o app-sprite-test
+gcc testspriteminimal.c testutils.c -I. -L. -lSDL3 -o app-sprite-test && ./app-sprite-test
+
+
+gcc -DHAVE_VULKAN_H testvulkan.c -I. -L. -lSDL3_test -lSDL3 -o app-vulkan-test && ./app-vulkan-test
 
 
 # used with MSYS2 + MINGW64 on my dual-boot Windows 11
